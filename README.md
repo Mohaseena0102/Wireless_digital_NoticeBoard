@@ -21,14 +21,16 @@ Messages are authenticated using a passkey-based input format before being displ
 
 ## 🛠️ Hardware Requirements
 
-### |  Component	                                  |                                         Description                      |
-|LPC2148	                                          |                        ARM7 Microcontroller (controller of the system)   |
-|8x8 Dot Matrix LED (x4)	                          |                    Display modules for scrolling text                    |
-|74HC573 (Latch)	                                  |                        Controls dot matrix row selection                 |
-|74HC164 (Shift Register)                             |                     Serial-to-parallel conversion for column data        |
-|AT24C256 (EEPROM)                                    |                    	Stores messages persistently                         | 
-|HC-05 Bluetooth Module                               |                    	Wireless communication from mobile device            |
-|DB-9 Cable / USB-UART Converter                      |                    	For UART programming/debugging                       |
+| Component                 | Description                                 |
+|---------------------------|---------------------------------------------|
+| LPC2148                   | ARM7 Microcontroller (controller of system) |
+| 8x8 Dot Matrix LED (x4)   | Display modules for scrolling text          |
+| 74HC573 (Latch)           | Controls dot matrix row selection           |
+| 74HC164 (Shift Register)  | Serial-to-parallel conversion for columns   |
+| AT24C256 (EEPROM)         | Stores messages persistently                |
+| HC-05 Bluetooth Module    | Wireless communication from mobile device   |
+| DB-9 Cable / USB-UART     | For UART programming/debugging              |
+                      
 
 ## 💻 Software Requirements
 
