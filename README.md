@@ -1,30 +1,131 @@
-# Wireless Digital Notice Board
-### AIM: The main aim of this project is to replace traditional physical notice boards with a dynamic, remotely updatable digital display. The project utilizes the LPC2148 microcontroller, interfacing with a dot matrix LED display to show messages such as announcements, alerts, or notices. The system operates wirelessly via Bluetooth communication, allowing users to update the displayed content from a mobile device.
+# Wireless Digital Notice Board using LPC2148
 
-## Block diagram: 
+## 📌 Project Overview
+
+The Wireless Digital Notice Board replaces traditional notice boards with a dynamic, remotely updatable digital display.
+It is built around the LPC2148 ARM7 microcontroller and a dot matrix LED display, with messages sent wirelessly via Bluetooth (HC-05).
+
+Messages are authenticated using a passkey-based input format before being displayed. The latest valid message is saved into EEPROM (AT24C256) so it remains available even after reset or power loss.
+## Block Diagram
+
+<img width="732" height="449" alt="Screenshot 2025-09-05 222153" src="https://github.com/user-attachments/assets/adba7071-2c3f-41ff-b1f8-b82eacaa177c" />
+
+## 🚀 Features
+
+* Wireless message updates using Bluetooth
+* Supports scrolling messages across multiple dot matrix displays
+* Messages stored in EEPROM for persistence
+* Passkey-based authentication for security
+* Modular design using shift registers (74HC164) and latches (74HC573)
+* Developed in Embedded C (Keil) and programmed with Flash Magic
+
+## 🛠️ Hardware Requirements
+
+### Component	                                                                           Description
+LPC2148	                                                                  ARM7 Microcontroller (controller of the system)
+8x8 Dot Matrix LED (x4)	                                                  Display modules for scrolling text
+74HC573 (Latch)	                                                          Controls dot matrix row selection
+74HC164 (Shift Register)                                                  Serial-to-parallel conversion for column data
+AT24C256 (EEPROM)                                                        	Stores messages persistently
+HC-05 Bluetooth Module                                                   	Wireless communication from mobile device
+DB-9 Cable / USB-UART Converter                                          	For UART programming/debugging
+
+## 💻 Software Requirements
+
+* Keil uVision (C Compiler) – Embedded C programming
+* Flash Magic – Programming tool for LPC2148
+* Bluetooth Terminal (Android app) – Sending messages wirelessly
+
+## ⚙️ Implementation Workflow
+
+1.Initialize Project – Create project in Keil, configure startup and libraries.
+
+2.Basic Test – Display a single character on one dot matrix.
+
+3.Multi-Display Handling – Extend to display 4 characters simultaneously.
+
+4.Scrolling Logic – Implement text scrolling across displays.
+
+void scrollMessage(char *msg) {
+    for(int i=0; i<strlen(msg); i++) {
+        displayChar(msg[i]);
+        delay();
+    }
+}
+
+5.EEPROM Integration – Save and retrieve messages persistently.
+
+EEPROM_WriteByte(addr, data);
+char data = EEPROM_ReadByte(addr);
+
+6.UART Test – Verify communication by sending and receiving test data.
+
+7.Bluetooth Setup – Pair HC-05 with phone, send message via Bluetooth Terminal.
+
+8.Passkey Security – Only accept messages in valid format (see below).
+
+9.Main Loop – Continuously read message from EEPROM and scroll it.
+        #### If new message received → authenticate → update EEPROM → display.
+
+## 🔒 Security Mechanism
+
+To prevent unauthorized access, every message must follow this input format:
+
+* @<passkey><message>$
 
 
+* @ → Start of message
 
-<img width="724" height="450" alt="Screenshot 2025-09-05 221950" src="https://github.com/user-attachments/assets/c2dedc23-3bd8-40e0-8fa6-71cc32de1d06" />
+* <passkey> → 3-digit authentication code (default: 153)
 
-## HARDWRAE REQUIREMENTS
-* LPC2148
-* 4 - 8x8 DOT MATRIX DISPLAYS
-* 74HC573 (LATCH)
-* 74HC164 (SHIFT REGISTER)
-* AT24C256 (EEPROM)
-* HC-05 BLUETOOTH MODULE
-* DB-9 CABLE/USB-UART CONVERTER
+* <message> → Text to display
 
-## SOFTWARE REQUIREMENTS
-* KEIL C Compiler
-* PROGRAMMING IN EMBEDDED C
-* Flash Magic
-## Features
-1. #### Dynamic Digital Display:The system uses a dot matrix LED display to show messages, announcements, and notices.
-2. Wireless Updation: The display can be updated remotely using Bluetooth communication from a mobile device.
-3. Microcontroller-based: The project utilizes the LPC2148 microcontroller for processing and controlling the display.
-4. Multiple Display Support: The system can support multiple 8x8 dot matrix displays (4 in this case).
-5. Data Storage: The system uses an EEPROM (AT24C256) for storing data.
-6. User-friendly Interface: The system allows users to update the displayed content wirelessly using a mobile device.
+* $ → End of message
 
+### Example
+Input via Bluetooth	Parsed Output	Displayed on LED
+@153hello$	Passkey = 153, Message = "hello"	hello
+@153Meeting at 10AM$	Passkey = 153, Message = "Meeting at 10AM"	Meeting at 10AM (scrolling)
+@999Hi$	Wrong passkey	❌ Ignored
+#### 🔑 Implementation Snippet
+void processInput(char *input) {
+    if(input[0] == '@' && input[strlen(input)-1] == '$') {
+        char passkey[4];
+        strncpy(passkey, input+1, 3);  // extract passkey
+        passkey[3] = '\0';
+        
+        if(strcmp(passkey, "153") == 0) {  // check passkey
+            char message[100];
+            strncpy(message, input+4, strlen(input)-5);
+            message[strlen(input)-5] = '\0';
+            
+            saveMessageToEEPROM(message);
+            scrollMessage(message);
+        } else {
+            // Invalid passkey → ignore
+        }
+    }
+}
+
+### 🖥️ Sample Input / Output
+Input	Output
+@153Welcome$	Welcome
+@153Project Completed Successfully$	Project Completed Successfully (scrolling)
+No message stored	Waiting for message
+
+## 🚀 Future Enhancements
+
+* Upgrade Bluetooth → Wi-Fi/IoT for remote cloud updates
+
+* Control multiple boards in sync
+
+* Replace LED matrix with LCD/TFT display
+
+* Web-based admin dashboard
+
+* Add SMS/voice command support
+
+## 📢 Conclusion
+
+This project successfully demonstrates a secure, wireless, and persistent digital notice board using LPC2148 + Bluetooth + EEPROM.
+It combines embedded C programming, wireless communication, and hardware interfacing to create a real-world IoT-ready system.
