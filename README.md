@@ -1,5 +1,5 @@
 # Wireless Digital Notice Board
-AIM: The main aim of this project is to replace traditional physical notice boards with a dynamic, remotely updatable digital display. The project utilizes the LPC2148 microcontroller, interfacing with a dot matrix LED display to show messages such as announcements, alerts, or notices. The system operates wirelessly via Bluetooth communication, allowing users to update the displayed content from a mobile device.
+### AIM: The main aim of this project is to replace traditional physical notice boards with a dynamic, remotely updatable digital display. The project utilizes the LPC2148 microcontroller, interfacing with a dot matrix LED display to show messages such as announcements, alerts, or notices. The system operates wirelessly via Bluetooth communication, allowing users to update the displayed content from a mobile device.
 
 ## Block diagram: 
 
@@ -21,7 +21,7 @@ AIM: The main aim of this project is to replace traditional physical notice boar
 * PROGRAMMING IN EMBEDDED C
 * Flash Magic
 ## Features
-1. Dynamic Digital Display:The system uses a dot matrix LED display to show messages, announcements, and notices.
+1. #### Dynamic Digital Display:The system uses a dot matrix LED display to show messages, announcements, and notices.
 2. Wireless Updation: The display can be updated remotely using Bluetooth communication from a mobile device.
 3. Microcontroller-based: The project utilizes the LPC2148 microcontroller for processing and controlling the display.
 4. Multiple Display Support: The system can support multiple 8x8 dot matrix displays (4 in this case).
