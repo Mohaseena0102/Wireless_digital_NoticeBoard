@@ -18,6 +18,6 @@ AIM: The main aim of this project is to replace traditional physical notice boar
 
 
 ## SOFTWARE REQUIREMENTS:
-KEIL C Compiler
-PROGRAMMING IN EMBEDDED C
-Flash Magic
+* KEIL C Compiler
+* PROGRAMMING IN EMBEDDED C
+* Flash Magic
