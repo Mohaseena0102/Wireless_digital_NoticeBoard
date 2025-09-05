@@ -1,4 +1,4 @@
-Wireless Digital Notice Board
+# Wireless Digital Notice Board
 
 A wireless digital notice board is an innovative display system that enables users to wirelessly transmit and display digital content, such as text, images, and videos, on a central screen. This system typically consists of a display unit, a control unit, and a user interface, allowing administrators to easily manage and update content remotely.
 
