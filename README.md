@@ -110,11 +110,7 @@ void processInput(char *input) {
 }
 
 ### 🖥️ Sample Input / Output
-Input	Output
-@153Welcome$	Welcome
-@153Project Completed Successfully$	Project Completed Successfully (scrolling)
-No message stored	Waiting for message
-
+<pre> Input Output @153Welcome$ Welcome @153Project Completed Successfully$ Project Completed Successfully (scrolling) No message stored Waiting for message </pre>
 ## 🚀 Future Enhancements
 
 * Upgrade Bluetooth → Wi-Fi/IoT for remote cloud updates
