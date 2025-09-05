@@ -67,7 +67,7 @@ char data = EEPROM_ReadByte(addr);
 8.Passkey Security – Only accept messages in valid format (see below).
 
 9.Main Loop – Continuously read message from EEPROM and scroll it.
-        #### If new message received → authenticate → update EEPROM → display.
+  #### If new message received → authenticate → update EEPROM → display.
 
 ## 🔒 Security Mechanism
 
