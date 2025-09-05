@@ -4,4 +4,5 @@ AIM: The main aim of this project is to replace traditional physical notice boar
 Block diagram: 
 
 
-      <img width="712" height="432" alt="image" src="https://github.com/user-attachments/assets/3cdc0ce7-5590-4371-aec4-75c754f68341" />
+
+<img width="724" height="450" alt="Screenshot 2025-09-05 221950" src="https://github.com/user-attachments/assets/c2dedc23-3bd8-40e0-8fa6-71cc32de1d06" />
