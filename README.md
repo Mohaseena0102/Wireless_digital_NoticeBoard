@@ -109,7 +109,7 @@ void processInput(char *input) {
     }
 }
 
-### 🖥️ Sample Input / Output
+#### 🖥️ Sample Input / Output
 | Input                                | Output                                      |
 |--------------------------------------|---------------------------------------------|
 | @153Welcome$                         | Welcome                                     |
