@@ -1,18 +1,4 @@
 # Wireless Digital Notice Board
+AIM: The main aim of this project is to replace traditional physical notice boards with a dynamic, remotely updatable digital display. The project utilizes the LPC2148 microcontroller, interfacing with a dot matrix LED display to show messages such as announcements, alerts, or notices. The system operates wirelessly via Bluetooth communication, allowing users to update the displayed content from a mobile device.
 
-A wireless digital notice board is an innovative display system that enables users to wirelessly transmit and display digital content, such as text, images, and videos, on a central screen. This system typically consists of a display unit, a control unit, and a user interface, allowing administrators to easily manage and update content remotely.
-
-Key Features:
-
-- Wireless connectivity for easy content updates
-- Remote management and scheduling capabilities
-- Support for various content formats (text, images, videos)
-- Scalable and flexible display options
-- Energy-efficient design
-
-Benefits:
-
-- Enhanced communication and information dissemination
-- Increased flexibility and convenience
-- Reduced maintenance and operational costs
-- Improved visual appeal and engagement
+# Block diagram: 
